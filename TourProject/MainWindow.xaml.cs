@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TourProject.Classes;
+using TourProject.Pages;
 
 namespace TourProject
 {
@@ -23,6 +25,20 @@ namespace TourProject
         public MainWindow()
         {
             InitializeComponent();
+            BaseClass.tBE = new Entities1();
+            FrameClass.MainFrame = fMain;
+            FrameClass.MainFrame.Navigate(new TourList());
+
+            //Устанавливаем окно по центру экрана
+            double screenHeight = SystemParameters.FullPrimaryScreenHeight;
+            double screenWidth = SystemParameters.FullPrimaryScreenWidth;
+            this.Top = (screenHeight - this.Height) / 2;
+            this.Left = (screenWidth - this.Width) / 2;
+        }
+
+        private void btnTourList_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new HotelList());
         }
     }
 }

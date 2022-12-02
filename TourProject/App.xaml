@@ -5,5 +5,19 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          
+        <!--Стиль для кнопки-->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="GreenYellow"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="7"/>
+        </Style>
+        
+        
+        <!--Стиль для текста-->
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        </Style>
+        
     </Application.Resources>
 </Application>
