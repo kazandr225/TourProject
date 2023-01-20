@@ -21,11 +21,14 @@ namespace TourProject.Pages
     /// </summary>
     public partial class TourList : Page
     {
+        List<Tour> TourFilter = new List<Tour>();
         public TourList()
         {
             InitializeComponent();
-            listTour.ItemsSource = BaseClass.tBE.Tour.ToList();
+            BaseClass.tBE = new Entities1();
+            TourFilter = BaseClass.tBE.Tour.ToList();
 
+            listTour.ItemsSource = BaseClass.tBE.Tour.ToList();
             List<Type> Tp = BaseClass.tBE.Type.ToList();
 
             cmbTourType.Items.Add("Все типы");
@@ -50,14 +53,14 @@ namespace TourProject.Pages
 
             //требуется починить эту часть для хоть какой-то работы фильтра
             // поиск значений, удовлетворяющих условия фильтра
-            //if (index != 0)
-            //{
-            //    typeList = BaseClass.tBE.TypeOfTour.Where(x => x.Type.Name_Type == tour).ToList();
-            //}
-            if (index == 0) //пока будет заглушкой
-            { 
-            
+            if (index != 0)
+            {
+                //typeList = BaseClass.tBE.Type.Where(x => x.Type.Name_Type == tour).ToList();
             }
+            //if (index == 0) //пока будет заглушкой
+            //{ 
+
+            //}
             else  // если выбран пункт "Все типы", то сбрасываем фильтрацию:
             {
                 typeList = BaseClass.tBE.Tour.ToList();
@@ -85,8 +88,8 @@ namespace TourProject.Pages
             //listTour.Text = "Количество записей " + typeList.Count;
         }
 
-        //это был заскок на фильтр по афлафиту
-        private void cmbTourType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        
+        private void cmbTourType_SelectionChanged(object sender, SelectionChangedEventArgs e) //Фильтрация по типу тура
         {
             Filter();
         }
