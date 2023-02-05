@@ -40,5 +40,15 @@ namespace TourProject
         {
             FrameClass.MainFrame.Navigate(new HotelList());
         }
+
+        private void btnHotels_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new Pages.HotelList());
+        }
+
+        private void btnTours_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new Pages.TourList());
+        }
     }
 }

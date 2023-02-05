@@ -20,7 +20,8 @@
         <TextBlock Grid.Row="0" Grid.Column="1" Margin="10" FontSize="36" HorizontalAlignment="Center">Название приложения</TextBlock>
 
         <StackPanel HorizontalAlignment="Right" Grid.Column="2" Grid.Row="0">
-            <Button Name="btnAutorization" >Список отелей</Button>
+            <Button Name="btnHotels" Click="btnHotels_Click" >Список отелей</Button>
+            <Button Name="btnTours" Click="btnTours_Click" >Список туров</Button>
         </StackPanel>
 
 
