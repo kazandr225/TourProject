@@ -24,5 +24,10 @@ namespace TourProject.Pages
         {
             InitializeComponent();
         }
+
+        private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

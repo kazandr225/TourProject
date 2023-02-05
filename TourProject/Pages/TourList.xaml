@@ -15,7 +15,6 @@
         <StackPanel>
             <StackPanel>
                 <GroupBox Header="Введите текст для поиска: ">
-                    <!--<TextBlock></TextBlock>-->
                     <TextBox Name="tbSearch" TextChanged="tbSearch_TextChanged" Height="35" FontSize="18" HorizontalAlignment="Center" Width="350"></TextBox>
                 </GroupBox>
                 <ComboBox Name="cmbTourType" SelectionChanged="cmbTourType_SelectionChanged" HorizontalAlignment="Center" Width="350"></ComboBox>
@@ -23,7 +22,7 @@
             </StackPanel>
 
             <ListView Name="listTour" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="500">
-                <ListView.ItemsPanel> <!--Вот эту штуку для вертикального удилить-->
+                <ListView.ItemsPanel> 
                     <ItemsPanelTemplate>
                         <WrapPanel HorizontalAlignment="Center"></WrapPanel>
                     </ItemsPanelTemplate>
@@ -31,12 +30,14 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border Padding="5" CornerRadius="5" BorderThickness="1" BorderBrush="Aquamarine">
-                            <Grid Name="gridMain" Width="500" Height="500" Background="{Binding GenderColor}">
+                            <Grid Name="gridMain" Width="500" Height="500" Background="{Binding TourColor}">
                                 <StackPanel>
                                     <TextBlock Text="{Binding Name_Tour}"/>
                                     <Image Width="100" Height="100" Source="{Binding ImagePreview, TargetNullValue={StaticResource defaultImage}}"/>
-                                    <TextBlock Text="{Binding Price}"/>
-                                    <TextBlock Text="{Binding IsActual}"/>
+                                    <TextBlock  TextWrapping="Wrap" TextAlignment="Center"  Text="{Binding Name}"/>
+                                    <TextBlock Text="{Binding TicketCount,StringFormat={}{0} билетов}"/>
+                                    <TextBlock Text="{Binding Price, StringFormat={}{0:F2} рублей}"/>
+                                    <TextBlock Uid="{Binding IsActual}" Name="tbAct" Loaded="tbAct_Loaded"/>
                                 </StackPanel>
                             </Grid>
                         </Border>

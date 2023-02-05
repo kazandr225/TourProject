@@ -38,10 +38,6 @@ namespace TourProject.Pages
             }
 
             cmbTourType.SelectedIndex = 0;
-            //cbActualTour.IsChecked; //индекс для галочки актуальных туров
-
-            //тут можно добавить счетчик для количества билетов
-
         }
 
         void Filter()  // метод для одновременной фильтрации, поиска и сортировки
@@ -51,16 +47,13 @@ namespace TourProject.Pages
             string tour = cmbTourType.SelectedValue.ToString();  // выбранное пользователем название тура
             int index = cmbTourType.SelectedIndex;
 
-            //требуется починить эту часть для хоть какой-то работы фильтра
             // поиск значений, удовлетворяющих условия фильтра
             if (index != 0)
             {
-                //typeList = BaseClass.tBE.Type.Where(x => x.Type.Name_Type == tour).ToList();
+                List<int> type = BaseClass.tBE.TypeOfTour.Where(x => x.Type.id_Type == cmbTourType.SelectedIndex).Select(x => x.id_Tour).ToList();
+                TourFilter = TourFilter.Where(x => type.Contains(x.id_Tour)).ToList();
             }
-            //if (index == 0) //пока будет заглушкой
-            //{ 
-
-            //}
+            
             else  // если выбран пункт "Все типы", то сбрасываем фильтрацию:
             {
                 typeList = BaseClass.tBE.Tour.ToList();
@@ -85,10 +78,8 @@ namespace TourProject.Pages
             {
                 MessageBox.Show("нет записей");
             }
-            //listTour.Text = "Количество записей " + typeList.Count;
         }
 
-        
         private void cmbTourType_SelectionChanged(object sender, SelectionChangedEventArgs e) //Фильтрация по типу тура
         {
             Filter();
@@ -100,6 +91,21 @@ namespace TourProject.Pages
         private void cbActualTour_Checked(object sender, RoutedEventArgs e)
         {
             Filter();
+        }
+
+        private void tbAct_Loaded(object sender, RoutedEventArgs e)
+        {
+            TextBlock tb = (TextBlock)sender;  
+            bool index = Convert.ToBoolean(tb.Uid); 
+
+            if (index == true)
+            {
+                tb.Text = "Актуален";
+            }
+            else
+            {
+                tb.Text = "Не актуален";
+            }
         }
     }
 }
